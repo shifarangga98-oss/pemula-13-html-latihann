@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Creative Portfolio</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+
+<style>
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+body {
+    display: flex;
+    min-height: 100vh;
+    background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
+    color: white;
+}
+
+/* LOGIN */
+.login-screen {
+    position: fixed;
+    inset: 0;
+    background: linear-gradient(135deg, #141e30, #243b55);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    z-index: 999;
+    transition: 0.5s;
+}
+
+.login-screen.hide {
+    opacity: 0;
+    visibility: hidden;
+}
+
+.login-screen input {
+    padding: 10px 15px;
+    border-radius: 8px;
+    border: none;
+    margin-bottom: 10px;
+    width: 220px;
+}
+
+.login-screen button {
+    padding: 8px 20px;
+    border: none;
+    border-radius: 8px;
+    background: #00f5ff;
+    cursor: pointer;
+}
+
+/* SIDEBAR */
+.sidebar {
+    width: 260px;
+    background: rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(20px);
+    padding: 40px 25px;
+    text-align: center;
+}
+
+.sidebar ul {
+    list-style: none;
+    margin-top: 30px;
+}
+
+.sidebar ul li {
+    margin: 15px 0;
+}
+
+.sidebar ul li a {
+    color: white;
+    text-decoration: none;
+    cursor: pointer;
+    font-weight: 500;
+}
+
+.main {
+    flex: 1;
+    padding: 60px;
+}
+
+.section {
+    display: none;
+}
+
+.section.active {
+    display: block;
+}
+
+.card {
+    background: rgba(255, 255, 255, 0.08);
+    padding: 40px;
+    border-radius: 20px;
+    backdrop-filter: blur(15px);
+    max-width: 700px;
+}
+
+/* FOTO */
+.photo-container {
+    margin-top: 30px;
+    text-align: center;
+}
+
+.photo-frame {
+    position: relative;
+    width: 250px;
+    height: 250px;
+    margin: auto;
+    padding: 8px;
+    border-radius: 25px;
+    background: linear-gradient(135deg, #00f5ff, #ff00c8);
+    box-shadow: 0 0 25px #00f5ff, 0 0 45px #ff00c8;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    transition: 0.4s;
+}
+
+.photo-frame:hover {
+    transform: scale(1.05);
+}
+
+.photo-frame img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 18px; 
+}
+
+.emoji-sticker {
+    position: absolute;
+    bottom: 8px;
+    right: 8px;
+    font-size: 40px;
+}
+
+/* FRAME COLORS */
+.frame1 { background: linear-gradient(135deg, #00f5ff, #ff00c8); }
+.frame2 { background: linear-gradient(135deg, #ff9a9e, #fad0c4); }
+.frame3 { background: linear-gradient(135deg, #a18cd1, #fbc2eb); }
+.frame4 { background: linear-gradient(135deg, #43e97b, #38f9d7); }
+
+/* ABOUT */
+.about-card {
+    margin-top: 20px;
+    padding: 20px;
+    background: linear-gradient(135deg, #00f5ff20, #ff00c820);
+    border-radius: 15px;
+}
+
+.about-quote {
+    margin-top: 20px;
+    padding: 15px;
+    background: #ffffff20;
+    border-radius: 12px;
+    font-style: italic;
+    text-align: center;
+    color: #ffd369;
+}
+
+.visitor-name {
+    margin-top: 20px;
+    padding: 10px;
+    background: #ffffff20;
+    border-radius: 10px;
+    font-size: 14px;
+}
+
+.admin-box {
+    margin-top: 20px;
+    background: #ff00c820;
+    padding: 15px;
+    border-radius: 10px;
+    font-size: 13px;
+}
+</style>
+</head>
+
+<body>
+
+<div class="login-screen" id="loginScreen">
+    <h1>Welcome 👋<br>Enter your name</h1>
+    <input type="text" id="visitorInput" placeholder="Your name">
+    <button onclick="enterWebsite()">Enter</button>
+</div>
+
+<div class="sidebar">
+    <h2>Introduce</h2>
+    <ul>
+        <li><a onclick="showSection('home')">Home</a></li>
+        <li><a onclick="showSection('about')">About</a></li>
+    </ul>
+</div>
+
+<div class="main">
+
+<div id="home" class="section active">
+    <div class="card">
+        <h1>Haloo 👋<br>Saya Shifa Keisha Putri</h1>
+        <p>Saya berasal dari Lampung Selatan.</p>
+
+        <div class="photo-container">
+            <div class="photo-frame frame1" id="photoFrame">
+                <img src="WhatsApp Image 2026-03-03 at 13.28.45.jpeg" alt="">
+                <div class="emoji-sticker" id="emojiSticker">😊</div>
+            </div>
+        </div>
+
+        <p>Pilih Bingkai:</p>
+        <span onclick="changeFrame('frame1')">💙</span>
+        <span onclick="changeFrame('frame2')">🌸</span>
+        <span onclick="changeFrame('frame3')">💜</span>
+        <span onclick="changeFrame('frame4')">💚</span>
+
+        <p style="margin-top:20px;">Pilih Stiker:</p>
+        <span onclick="changeEmoji('😊')">😊</span>
+        <span onclick="changeEmoji('✨')">✨</span>
+        <span onclick="changeEmoji('🌸')">🌸</span>
+        <span onclick="changeEmoji('💖')">💖</span>
+        <span onclick="changeEmoji('🔥')">🔥</span>
+
+    </div>
+</div>
+
+<div id="about" class="section">
+    <div class="card">
+        <h2 style="color:#00f5ff;">About Me</h2>
+        <p>Halo semuanya! ayo kita berkenalan hihi!, saya remaja yang suka belajar hal baru seperti bermain catur dan masih banyak lagi!</p>
+
+        <div class="about-card">
+            <p>🎂 <strong>Tanggal Lahir:</strong> 11 Januari 2009</p>
+            <p>🎨 <strong>Hobi:</strong> Menggambar</p>
+            <p>🎓 <strong>Kuliah Impian:</strong> ITB</p>
+        </div>
+
+        <p class="about-quote">
+            “be the better one, Never give up” ✨
+        </p>
+
+        <div class="visitor-name" id="visitorDisplay"></div>
+        <div class="admin-box" id="adminPanel" style="display:none;">
+            <strong>Admin Mode (Khusus Kamu):</strong>
+            <div id="allVisitors"></div>
+        </div>
+    </div>
+</div>
+
+</div>
+
+<script>
+let visitors = [];
+
+function enterWebsite() {
+    const name = document.getElementById("visitorInput").value.trim();
+    if (name === "") {
+        alert("Masukkan nama dulu ya 😊");
+        return;
+    }
+
+    visitors.push(name);
+
+    document.getElementById("visitorDisplay").innerHTML =
+        "👋 Hai <strong>" + name + "</strong>, selamat datang yaa!";
+
+    if (name.toLowerCase() === "shifa") {
+        document.getElementById("adminPanel").style.display = "block";
+        document.getElementById("allVisitors").innerHTML =
+            visitors.join("<br>");
+    }
+
+    document.getElementById("loginScreen").classList.add("hide");
+}
+
+function showSection(sectionId) {
+    const sections = document.querySelectorAll(".section");
+    sections.forEach(section => section.classList.remove("active"));
+    document.getElementById(sectionId).classList.add("active");
+}
+
+function changeFrame(frameClass) {
+    document.getElementById("photoFrame").className =
+        "photo-frame " + frameClass;
+}
+
+function changeEmoji(emoji) {
+    document.getElementById("emojiSticker").textContent = emoji;
+}
+</script>
+
+</body>
+</html>
